@@ -73,6 +73,7 @@
           Selecionar Pasta para Salvar
         </button>
         <div id="output-dir-status" class="folder-status">Onde as fotos prontas serão salvas.</div>
+        <input type="file" id="input-folder-fallback" webkitdirectory directory multiple style="display: none;">
       </section>
 
       <!-- Passo 2: Marca D'Água (Logo) -->
@@ -82,14 +83,14 @@
           Marca D'Água / Logo
         </h2>
 
-        <div id="watermark-drop-zone" class="drop-zone">
+        <label for="input-watermark-file" id="watermark-drop-zone" class="drop-zone">
           <img id="watermark-preview-thumb" class="drop-zone-thumb" alt="Miniatura da Marca d'Água" src="./assets/sample-logo.svg">
           <div class="drop-zone-text">
             Arraste ou <strong>clique aqui</strong> para trocar a logo
           </div>
           <div id="watermark-name-display" class="file-name-tag">sample-logo.svg</div>
           <input type="file" id="input-watermark-file" accept="image/png,image/svg+xml,image/webp,image/jpeg" style="display: none;">
-        </div>
+        </label>
       </section>
 
       <!-- Passo 3: Posição e Ajustes -->
@@ -271,6 +272,6 @@
     </div>
   </div>
 
-  <script type="module" src="./js/app.js"></script>
+  <script src="./js/app.js"></script>
 </body>
 </html>
