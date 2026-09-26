@@ -1,70 +1,57 @@
 # Watermark Studio 📸
 
-Uma ferramenta web moderna, rápida e 100% segura para aplicação automatizada de marcas d'água e logos em lotes volumosos de fotos de eventos (suportando tranquilamente centenas ou mais de 2.000 fotos de câmera por evento).
+Uma ferramenta web moderna, elegante e de alta performance desenvolvida para aplicação automatizada de marcas d'água e logos em lotes volumosos de fotos de eventos (suportando tranquilamente centenas ou mais de 2.000 fotos de câmera fotográfica por lote).
 
 ---
 
-## ⚡ Como Usar no Dia a Dia
+## ✨ Principais Diferenciais
 
-### Opção 1: Uso Local Rápido no Windows (Recomendado para o computador pessoal)
-1. Dê dois cliques no arquivo **`iniciar_local.bat`**.
-2. Uma janela abrirá automaticamente no seu navegador em `http://localhost:8080`.
-3. Escolha a pasta com as fotos originais e a pasta de destino para gravação direta no disco.
-
-### Opção 2: Uso Online no GitHub Pages (Para compartilhar com a equipe via link)
-1. Envie o projeto para o GitHub (veja as instruções abaixo).
-2. Qualquer membro da equipe pode abrir o link no Google Chrome ou Microsoft Edge e carimbar as fotos diretamente, sem instalar nada.
+- **Processamento 100% Local (Privacidade Total):** Suas fotos **não são enviadas para nenhum servidor externo**. Todo o processamento ocorre diretamente no hardware do seu computador via HTML5 Canvas e APIs nativas de arquivo.
+- **Leveza e Desempenho em Lotes:** Utiliza a *File System Access API* para leitura e gravação sequencial direta no disco, permitindo processar milhares de arquivos sem acumular gigabytes na memória RAM.
+- **Detecção de Orientação da Câmera (EXIF):** Reconhece automaticamente metadados de fotos tiradas na vertical (retrato) e na horizontal (paisagem), ajustando a rotação e aplicando a logo na posição correta em ambas.
+- **Prévia Inteligente em Tempo Real:** Visualização interativa que carrega uma amostragem inicial das primeiras 10 fotos da pasta para testes rápidos antes do lote completo, evitando sobrecarga visual ou travamentos de memória.
+- **Ajustes Visuais Finos:**
+  - Grade de **9 posições predefinidas** (4 cantos, 4 laterais e centro).
+  - Controle proporcional de tamanho (% da imagem), recuo de margem e opacidade/transparência.
+  - Seletor de qualidade JPEG (Alta, Máxima para impressão ou Otimizada para web).
+  - Renomeação opcional com sufixo personalizado (ex: `foto_logo.jpg`).
 
 ---
 
-## 🚀 Passo a Passo no Aplicativo
+## 🖥️ Como Executar o Aplicativo
 
-1. **Passo 1 (Pastas no Computador):**
-   - Clique em **"Selecionar Pasta com Fotos"** para apontar onde estão as fotos originais.
-   - Clique em **"Selecionar Pasta para Salvar"** e indique onde deseja salvar as fotos prontas.
-2. **Passo 2 (Marca d'Água):**
-   - O aplicativo já vem com uma logo padrão de demonstração.
-   - Para usar a sua própria, clique na caixa da logo ou arraste seu arquivo PNG (com fundo transparente).
-3. **Passo 3 (Posição & Ajustes):**
-   - Escolha o canto desejado na grade de **9 posições** (o padrão é o canto inferior direito ↘).
-   - Ajuste o tamanho proporcional, margem e opacidade.
-   - Use os botões **◀ Anterior** e **Próxima ▶** para conferir as **10 fotos de amostra** (permitindo testar tanto fotos horizontais quanto verticais).
-4. **Disparar Lote:**
+Para garantir permissão completa de gravação direta nas pastas do seu computador, execute o aplicativo localmente através de:
+
+1. **Via Inicializador Windows (Recomendado):**
+   * Dê dois cliques no arquivo **`iniciar_local.bat`**.
+   * Ele iniciará um servidor leve e abrirá automaticamente o navegador em `http://localhost:8080`.
+
+2. **Ou via Navegador Direto:**
+   * Abra o arquivo **`index.html`** no Google Chrome ou Microsoft Edge.
+
+---
+
+## 🎯 Fluxo de Operação
+
+1. **Pastas no Computador:**
+   - Clique em **"Selecionar Pasta com Fotos"** e aponte para a pasta com as fotos originais do evento.
+   - Clique em **"Selecionar Pasta para Salvar"** e escolha a pasta de destino onde as fotos carimbadas serão gravadas.
+2. **Marca d'Água:**
+   - O app já inicia com uma logo de demonstração. Para usar a sua própria, clique na caixa da logo ou arraste seu arquivo de imagem (PNG com transparência ou SVG).
+3. **Posicionamento & Estilo:**
+   - Escolha o alinhamento desejado na grade de 9 botões (o padrão é o canto inferior direito ↘).
+   - Ajuste o tamanho proporcional, a margem e a opacidade.
+   - Use os botões **◀ Anterior** e **Próxima ▶** para alternar entre as 10 fotos de amostra e validar o visual tanto em fotos horizontais quanto verticais.
+4. **Processamento do Lote:**
    - Clique em **"Iniciar Processamento do Lote"**.
-   - Acompanhe a barra de progresso em tempo real com contador, velocidade (fotos/s) e estimativa de tempo restante.
+   - Acompanhe a barra de progresso em tempo real com contador de fotos, velocidade de processamento (`fotos/s`) e estimativa de tempo restante (ETA).
 
 ---
 
-## 📚 Documentação do Projeto
+## 📚 Documentação Técnica Adicional
 
-Para manter este `README` focado e prático, as informações aprofundadas foram organizadas na pasta **`docs/`**:
+Para detalhes arquiteturais e registro de evolução do código, consulte a pasta **`docs/`**:
 
-- 📋 [Planejamento Inicial](docs/01-planejamento.md) — Objetivos, análise de volume e requisitos.
-- 🏗️ [Arquitetura & Engenharia](docs/02-arquitetura.md) — Pipeline de memória do Canvas, rotação EXIF e APIs de arquivo.
-- 📝 [Histórico de Mudanças (Changelog)](docs/historico-mudancas.md) — Registro de todas as versões e melhorias.
-
----
-
-## 🌐 Como Subir para o GitHub e Ativar o GitHub Pages
-
-### 1. Criar o Repositório no GitHub
-1. Acesse [github.com/new](https://github.com/new).
-2. Dê um nome ao repositório (ex: `projetoLogosCrisma` ou `watermark-studio`).
-3. Deixe o repositório como **Público** (para usar o GitHub Pages gratuito) e **não** marque as opções de adicionar README ou .gitignore (pois já temos no projeto).
-4. Clique em **Create repository**.
-
-### 2. Enviar o Código do seu Computador
-No seu terminal (ou Git Bash / WSL), dentro da pasta do projeto, execute os comandos exibidos pelo GitHub:
-```bash
-git remote add origin https://github.com/SEU_USUARIO/NOME_DO_REPOSITORIO.git
-git branch -M main
-git push -u origin main
-```
-
-### 3. Ativar o Link Online (GitHub Pages)
-1. No seu repositório no GitHub, clique na aba **Settings** (Configurações).
-2. No menu lateral esquerdo, clique em **Pages**.
-3. Em **Branch**, selecione `main` e a pasta `/(root)`.
-4. Clique em **Save**.
-5. Aguarde cerca de 1 minuto e atualize a página: o GitHub mostrará o link (ex: `https://seu-usuario.github.io/projetoLogosCrisma/`).
-6. Envie o link para a equipe e pronto!
+- 📋 [Planejamento do Projeto](docs/01-planejamento.md) — Objetivos, levantamento de volume e requisitos.
+- 🏗️ [Arquitetura & Engenharia](docs/02-arquitetura.md) — Pipeline de renderização em Canvas, ciclo de vida da memória RAM e correção EXIF.
+- 📝 [Histórico de Mudanças (Changelog)](docs/historico-mudancas.md) — Registro detalhado de versões e alterações realizadas.
