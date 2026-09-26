@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watermark Studio — Marca D'Água em Lote para Eventos</title>
+  <meta name="description" content="Aplique marcas d'água e logos em lotes de centenas ou milhares de fotos de eventos com alta performance, 100% no seu navegador e sem envio para servidores externos.">
+  <link rel="icon" type="image/svg+xml" href="./assets/sample-logo.svg">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <!-- Cabeçalho Principal -->
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+          <circle cx="12" cy="13" r="4"></circle>
+        </svg>
+      </div>
+      <div>
+        <h1>Watermark Studio</h1>
+        <div class="brand-subtitle">Processamento em Lote • 100% Local e Seguro</div>
+      </div>
+    </div>
+
+    <div class="header-status">
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span>Processamento Local Ativo</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner de Compatibilidade de Navegador -->
+  <div id="browser-warning" class="alert-banner">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="12" y1="8" x2="12" y2="12"></line>
+      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+    </svg>
+    <span><strong>Dica de Desempenho:</strong> Para selecionar e salvar direto nas pastas do seu computador em lotes de 1.000+ fotos, recomendamos abrir este site no <strong>Google Chrome</strong> ou <strong>Microsoft Edge</strong>.</span>
+  </div>
+
+  <!-- Layout Principal -->
+  <main class="app-container">
+    
+    <!-- Barra Lateral: Controles e Passos -->
+    <aside class="sidebar">
+      
+      <!-- Passo 1: Pastas de Fotos -->
+      <section class="card" id="card-folders">
+        <h2 class="card-title">
+          <span class="step-num">1</span>
+          Pastas no Computador
+        </h2>
+
+        <button type="button" id="btn-select-input-dir" class="btn-folder">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+          </svg>
+          Selecionar Pasta com Fotos
+        </button>
+        <div id="input-dir-status" class="folder-status">Nenhuma pasta de fotos selecionada.</div>
+
+        <button type="button" id="btn-select-output-dir" class="btn-folder">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Selecionar Pasta para Salvar
+        </button>
+        <div id="output-dir-status" class="folder-status">Onde as fotos prontas serão salvas.</div>
+      </section>
+
+      <!-- Passo 2: Marca D'Água (Logo) -->
+      <section class="card" id="card-watermark">
+        <h2 class="card-title">
+          <span class="step-num">2</span>
+          Marca D'Água / Logo
+        </h2>
+
+        <div id="watermark-drop-zone" class="drop-zone">
+          <img id="watermark-preview-thumb" class="drop-zone-thumb" alt="Miniatura da Marca d'Água" src="./assets/sample-logo.svg">
+          <div class="drop-zone-text">
+            Arraste ou <strong>clique aqui</strong> para trocar a logo
+          </div>
+          <div id="watermark-name-display" class="file-name-tag">sample-logo.svg</div>
+          <input type="file" id="input-watermark-file" accept="image/png,image/svg+xml,image/webp,image/jpeg" style="display: none;">
+        </div>
+      </section>
+
+      <!-- Passo 3: Posição e Ajustes -->
+      <section class="card" id="card-adjustments">
+        <h2 class="card-title">
+          <span class="step-num">3</span>
+          Posição & Ajustes Visuais
+        </h2>
+
+        <!-- Grade de 9 Posições -->
+        <label class="control-header" style="margin-bottom: 6px;">Posição da Logo</label>
+        <div class="position-grid">
+          <button type="button" class="position-btn" data-position="top-left" title="Canto Superior Esquerdo">↖</button>
+          <button type="button" class="position-btn" data-position="top-center" title="Superior Centro">↑</button>
+          <button type="button" class="position-btn" data-position="top-right" title="Canto Superior Direito">↗</button>
+          
+          <button type="button" class="position-btn" data-position="middle-left" title="Meio Esquerdo">←</button>
+          <button type="button" class="position-btn" data-position="center" title="Centro">⏺</button>
+          <button type="button" class="position-btn" data-position="middle-right" title="Meio Direito">→</button>
+          
+          <button type="button" class="position-btn" data-position="bottom-left" title="Canto Inferior Esquerdo">↙</button>
+          <button type="button" class="position-btn" data-position="bottom-center" title="Inferior Centro">↓</button>
+          <button type="button" class="position-btn active" data-position="bottom-right" title="Canto Inferior Direito">↘</button>
+        </div>
+
+        <!-- Slider de Tamanho -->
+        <div class="control-group">
+          <div class="control-header">
+            <span>Tamanho Proporcional</span>
+            <span id="val-size" class="val">14%</span>
+          </div>
+          <input type="range" id="slider-size" min="5" max="45" value="14" step="1">
+        </div>
+
+        <!-- Slider de Margem -->
+        <div class="control-group">
+          <div class="control-header">
+            <span>Recuo das Bordas (Margem)</span>
+            <span id="val-margin" class="val">3%</span>
+          </div>
+          <input type="range" id="slider-margin" min="0" max="15" value="3" step="0.5">
+        </div>
+
+        <!-- Slider de Opacidade -->
+        <div class="control-group">
+          <div class="control-header">
+            <span>Opacidade / Transparência</span>
+            <span id="val-opacity" class="val">95%</span>
+          </div>
+          <input type="range" id="slider-opacity" min="20" max="100" value="95" step="5">
+        </div>
+
+        <!-- Modo de Proporção -->
+        <div class="control-group">
+          <label class="control-header" for="select-scale-mode">Modo de Proporção</label>
+          <select id="select-scale-mode" class="select-control">
+            <option value="min" selected>Igual em fotos horizontais e verticais (Recomendado)</option>
+            <option value="width">Proporcional à largura total da foto</option>
+          </select>
+        </div>
+
+        <!-- Qualidade JPEG -->
+        <div class="control-group">
+          <label class="control-header" for="select-quality">Qualidade de Salvamento (JPEG)</label>
+          <select id="select-quality" class="select-control">
+            <option value="98">Máxima (98% - Ideal para impressão)</option>
+            <option value="92" selected>Alta Qualidade (92% - Recomendada para eventos)</option>
+            <option value="85">Otimizada para Redes Sociais (85% - Arquivos menores)</option>
+          </select>
+        </div>
+
+        <!-- Sufixo de Nome -->
+        <div class="control-group">
+          <div class="control-header">
+            <label for="input-file-suffix">Sufixo no Nome (Opcional)</label>
+          </div>
+          <input type="text" id="input-file-suffix" class="select-control" placeholder="Ex: logo (salva como foto_logo.jpg)">
+        </div>
+
+        <!-- Opções extras -->
+        <label class="checkbox-row">
+          <input type="checkbox" id="check-placement-box">
+          <span>Destacar contorno da logo no preview</span>
+        </label>
+      </section>
+
+    </aside>
+
+    <!-- Área Principal: Prévia e Ação -->
+    <section class="preview-panel">
+      
+      <!-- Card da Prévia Interativa -->
+      <div class="preview-card" id="preview-container">
+        
+        <div class="preview-toolbar">
+          <div class="preview-badges">
+            <span id="preview-info-badge" class="badge badge-info">Amostra Inicial</span>
+            <span id="preview-orientation-badge" class="badge" style="display: none;">Horizontal</span>
+          </div>
+
+          <div class="sample-nav">
+            <button type="button" id="btn-prev-sample" class="btn-nav" disabled title="Foto Anterior">◀ Anterior</button>
+            <span id="sample-counter" class="sample-counter">-</span>
+            <button type="button" id="btn-next-sample" class="btn-nav" disabled title="Próxima Foto">Próxima ▶</button>
+          </div>
+        </div>
+
+        <!-- Palco do Canvas da Imagem -->
+        <div class="preview-stage">
+          <canvas id="preview-canvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Card de Progresso do Lote (Aparece ao Iniciar) -->
+      <div id="processing-card" class="processing-card">
+        <div class="progress-header">
+          <span class="progress-title">Processando Lote de Fotos...</span>
+          <span id="progress-percent" class="progress-percent">0%</span>
+        </div>
+
+        <div class="progress-bar-bg">
+          <div id="progress-bar" class="progress-bar-fill"></div>
+        </div>
+
+        <div class="progress-details">
+          <span id="progress-counter">0 de 0 fotos</span>
+          <span id="progress-current-file" class="progress-filename">-</span>
+          <span id="progress-eta">Calculando tempo restante...</span>
+        </div>
+
+        <div class="progress-controls">
+          <button type="button" id="btn-pause-process" class="btn-secondary">Pausar</button>
+          <button type="button" id="btn-cancel-process" class="btn-secondary btn-danger">Cancelar</button>
+        </div>
+      </div>
+
+      <!-- Botão de Disparo Principal -->
+      <button type="button" id="btn-start-process" class="btn-action-primary" disabled>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+        Iniciar Processamento do Lote
+      </button>
+
+    </section>
+
+  </main>
+
+  <!-- Modal de Conclusão com Estatísticas -->
+  <div id="modal-success" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-icon-success">
+        <svg viewBox="0 0 24 24">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+
+      <h3 class="modal-title">Lote Concluído com Sucesso!</h3>
+      <p class="modal-subtitle">Todas as fotos foram carimbadas com a logo e gravadas diretamente na sua pasta de destino.</p>
+
+      <div class="modal-stats-grid">
+        <div class="stat-item">
+          <span class="stat-label">Total Salvo</span>
+          <span id="modal-total-processed" class="stat-value">-</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Tempo Total</span>
+          <span id="modal-total-time" class="stat-value">-</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Velocidade Média</span>
+          <span id="modal-avg-speed" class="stat-value">-</span>
+        </div>
+      </div>
+
+      <button type="button" id="modal-success-close" class="btn-action-primary">
+        Fechar e Voltar
+      </button>
+    </div>
+  </div>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

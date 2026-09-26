@@ -1,0 +1,12 @@
+# Sistema operacional e editores
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+.vscode/
+.idea/
+
+# Arquivos temporarios e fotos de teste
+test_photos/
+output/
+scratch/
